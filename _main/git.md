@@ -19,3 +19,7 @@ git cherry-pick -n -m1 aaaaaaaaaaaaabbbbbbbbbbbbbhhhhh
 git remote -v
 
 
+# リポジトリ追加
+git remote add origin https://github.com/＊＊＊＊＊＊＊.git
+
+

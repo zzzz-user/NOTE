@@ -5,3 +5,7 @@ node --version
 npm --version
 vue --version
 
+# install
+vue create vuuuue
+
+

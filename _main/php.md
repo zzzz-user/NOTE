@@ -48,3 +48,5 @@ $value = str_replace(hex2bin("E3809C"), hex2bin("EFBD9E"), $value);
         echo bin2hex('〜');
 
 
+# 出力
+printf("in: %s\n", "string");

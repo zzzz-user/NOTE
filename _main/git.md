@@ -1,3 +1,10 @@
+# git
+
+# 最初にやる設定
+git config --local user.name NAMAE
+git config --local user.email sample@sample.com
+
+
 # 【GitLab】ブラウザで改行コードによる差分を表示しない
 URLにパラメ追加「?w=1」
 

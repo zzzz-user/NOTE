@@ -17,3 +17,10 @@ pip list
 # 辞書型
 dict={'1': 'January', '2': 'February', '3': 'March', '4': 'April', '5': 'May', '6': 'June'}
 
+# DBにSQLiteを使う設定
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}

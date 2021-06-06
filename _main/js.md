@@ -1,5 +1,7 @@
 # JavaScript
 
+# 型
+typeof variable
 
 # ブラウザセッション
 ## 保存

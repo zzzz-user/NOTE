@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- version 2 -->
+    <script src="./vue.js"></script>
+
+    <title>Vue Document</title>
+    <style>
+    h1 {color: green;}
+    </style>
+
+</head>
+<body>
+
+<section>
+    <h1>初期ページ</h1>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app2">
+        {{ message }}
+    </div>
+
+
+</section>
+
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue !',
+  }
+});
+
+var app2 = new Vue({
+  el: '#app2',
+  data: {
+    message: 'Bye Vue !',
+  }
+});
+</script>
+
+</body>
+</html>

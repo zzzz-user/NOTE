@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- version 2 -->
+    <script src="./vue.js"></script>
+
+    <title>Vue Document</title>
+    <style>
+    h1 {
+        color: green;
+    }
+    </style>
+
+</head>
+<body>
+
+<section>
+    <h1>For文を書く</h1>
+
+    <div id="app">
+      {{ message }}
+
+      <hr>
+      <p>{{items1}}</p>
+      <li
+        v-for="(item, idx) in items1"
+        :key="`ff-${idx}`"
+        :id = "`list-${idx}`"
+      >
+        通番[{{idx}}] = {{item}}
+      </li>
+
+      <hr>
+      <p>{{items2}}</p>
+      <li
+        v-for="(item, idx) in items2"
+        :key="`ff-${idx}`"
+        :id = "`list2-${idx}`"
+      >
+        通番[{{idx}}] => id={{item.id}}, name={{item.name}}
+      </li>
+
+    </div>
+
+</section>
+
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'メッセージ',
+    items1: ['a', 'b', 'c'],
+    items2: [
+      {id: 1, name: 'aaa'},
+      {id: 2, name: 'bbb'},
+      {id: 3, name: 'ccc'},
+    ],
+  }
+})
+</script>
+
+</body>
+</html>

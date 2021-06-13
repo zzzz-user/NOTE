@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- version 2 -->
+    <script src="./vue.js"></script>
+
+    <title>Vue Document</title>
+    <style>
+    h1 {color: green;}
+    </style>
+</head>
+<body>
+
+<section>
+    <h1>分岐させる: 値が指定の場合に色を変える、みたいな</h1>
+
+    <div id="app">
+        {{ message }}
+      <div
+        v-bind:style="[(is_view) ? {color: 'green', border: 'solid 2px blue'} : '']"
+      >
+        てきとうな文字列。あああ。
+        <label for="c">
+          <input type="checkbox" v-model="is_view" id="c">
+          {{is_view}}
+          切り替え
+        </label>
+      </div>
+
+    </div>
+</section>
+
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue !',
+    is_view: true,
+  }
+});
+</script>
+
+</body>
+</html>

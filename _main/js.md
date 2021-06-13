@@ -47,3 +47,9 @@ let self = this;
 async function promiseAll() {
     return Promise.all([self.promiseMin(5), self.promiseMin(10)]);
 }
+
+
+# 乱数
+rnd() {
+    return Math.floor(Math.random() * 100);
+}

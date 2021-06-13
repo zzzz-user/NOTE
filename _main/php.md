@@ -90,6 +90,10 @@ php artisan serve
 php artisan cache:clear
 php artisan route:clear
 php artisan config:clear
+php artisan view:clear
+
+セットしたい場合は：cach
+
 
 # migration
 php artisan migrate
@@ -113,6 +117,7 @@ touch ./database/database.sqlite
 php artisan make:controller Dir/Namae --invokable
 php artisan make:model Namae
 php artisan make:request User/Sample/EditRequest
+php artisan make:middleware EventIsValid
 
 ## テーブル追加のマイグレーションファイルを作成
 php artisan make:migration create_namae_table

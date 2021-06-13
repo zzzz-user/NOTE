@@ -1,4 +1,4 @@
-# Vue CLI 3
+# vue
 
 # version
 node --version

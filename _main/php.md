@@ -33,6 +33,7 @@ if (strpos($str,'this') !== FALSE) {
 $int = "1";
 echo gettype($int);
 
+
 # 配列と文字列のやつ
 $s = implode('-', [1, 2, 4]);
 var_dump($s);
@@ -48,5 +49,133 @@ $value = str_replace(hex2bin("E3809C"), hex2bin("EFBD9E"), $value);
         echo bin2hex('〜');
 
 
-# 出力
+# 変数名の中身を変数で使う
+    $str = 'test';
+    $user->${"str"} = 'bbb';
+
+
+-----------------------------------------
+# debug, log
+-----------------------------------------
+$a = $aaa;
+error_log(date('Y/d/m h:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
+\Illuminate\Support\Facades\Log::info(var_export($a, true));
+
+\Log::info($e->getMessage());
+log_info($log);
+dump($log);
+dd($log);
+
+# 置換出力
 printf("in: %s\n", "string");
+
+
+
+
+
+======================================================================================================================
+# Laravel
+======================================================================================================================
+# compose
+composer --version
+composer install
+composer dump-autoload
+
+
+# laravel dev run serve
+php artisan serve
+
+
+# artisan
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+
+# migration
+php artisan migrate
+# 指定のマイグレートファイルを実行
+php artisan migrate:refresh --step=1  --path=/database/migrations/2020_20_20_00001_create_table_tablename.php
+
+# 指定のシーダーを実行
+php artisan db:seed --class=SeederFileNameSeeder
+
+
+# DB再構築
+php artisan migrate:fresh --seed
+
+
+# sqliteのファイルを作り直す
+rm ./database/database.sqlite
+touch ./database/database.sqlite
+
+
+# make
+php artisan make:controller Dir/Namae --invokable
+php artisan make:model Namae
+php artisan make:request User/Sample/EditRequest
+
+## テーブル追加のマイグレーションファイルを作成
+php artisan make:migration create_namae_table
+
+## カラム追加のマイグレーションファイルを作成
+php artisan make:migration add_column_info_table
+
+
+# テストファイルを作成
+php artisan make:test Dir/NamaeTest --unit
+
+# テスト実行
+php artisan test
+php artisan test --group NamaeTest
+
+
+# query
+->toSql();
+
+
+
+======================================================================================================================
+# curl
+======================================================================================================================
+# curl エラーを取得
+$ch = $ch;
+if(curl_exec($ch) === false) {
+    echo '<p style="color:red;bg-color:yellow;">Curl error: ' . curl_error($ch).'</p>';
+} else {
+    echo '<p style="color:grey;">Operation completed without any errors</p>'; // エラーなしで完了
+}
+
+$error = curl_error($ch); // error
+$errno = curl_errno($ch); // error_no
+
+$httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+echo $httpcode.'/';
+
+
+
+
+
+
+======================================================================================================================
+# Error Note.
+======================================================================================================================
+## ClassNot：  Class 'EloquentFilter\ServiceProvider' not found  
+## Symfony\Component\ErrorHandler\Error\FatalError Trait 'Spatie\MediaLibrary\InteractsWithMedia' not found
+再読み込み的な
+$ composer install
+$ composer dump-autoload
+$ php artisan
+
+
+
+
+
+
+
+
+======================================================================================================================
+# ECCUBE
+======================================================================================================================
+# log
+dump($qb->getQuery()->getSQL());
+

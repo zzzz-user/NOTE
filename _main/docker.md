@@ -7,6 +7,7 @@ docker-compose --version
 
 # dockerHubを検索できる
 docker search python3
+docker search php7
 
 
 # forWinでWindows、BIOS設定も確認
@@ -31,6 +32,7 @@ docker ps
 
 # 停止しているコンテナを確認
 docker ps -a
+docker ps --all
 
 # コンテナを一括で削除する＞コンテナIDを一覧出力させて指定削除
 docker rm `docker ps -a -q`

@@ -19,6 +19,10 @@ $int = array_map('intval', ["a", "2", "41"]);
 $_num = (int)preg_replace('/[^0-9]/', '', 'abc1-b3');
 
 
+# 文字列抜き出し
+'account' => substr($email. 0, strpos($email, "@")),
+
+
 # 指定の文字が含まれる
 $str = 'this is a pen.';  
 if (strpos($str,'this') !== FALSE) {  
@@ -58,8 +62,9 @@ $value = str_replace(hex2bin("E3809C"), hex2bin("EFBD9E"), $value);
 # debug, log
 -----------------------------------------
 $a = $aaa;
-error_log(date('Y/d/m h:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
 \Illuminate\Support\Facades\Log::info(var_export($a, true));
+
+error_log(date('Y/d/m h:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
 
 \Log::info($e->getMessage());
 log_info($log);
@@ -116,7 +121,6 @@ touch ./database/database.sqlite
 # make
 php artisan make:controller Dir/Namae --invokable
 php artisan make:model Namae
-php artisan make:request User/Sample/EditRequest
 php artisan make:middleware EventIsValid
 
 ## テーブル追加のマイグレーションファイルを作成
@@ -129,6 +133,10 @@ php artisan make:migration add_column_info_table
 # テストファイルを作成
 php artisan make:test Dir/NamaeTest --unit
 
+# リクエストファイルを作成
+php artisan make:request User/Sample/EditRequest
+
+
 # テスト実行
 php artisan test
 php artisan test --group NamaeTest
@@ -136,6 +144,11 @@ php artisan test --group NamaeTest
 
 # query
 ->toSql();
+
+
+# リクエストにマージする: ミドルウェア差し込みとか
+$request->merge(['test' => 'aaaaaaaaaaaaaaaa']);
+
 
 
 
@@ -167,13 +180,9 @@ echo $httpcode.'/';
 ## ClassNot：  Class 'EloquentFilter\ServiceProvider' not found  
 ## Symfony\Component\ErrorHandler\Error\FatalError Trait 'Spatie\MediaLibrary\InteractsWithMedia' not found
 再読み込み的な
-$ composer install
-$ composer dump-autoload
-$ php artisan
-
-
-
-
+composer install
+composer dump-autoload
+php artisan
 
 
 

@@ -7,8 +7,11 @@ docker-compose --version
 
 # dockerHubを検索できる
 docker search python3
-docker search php7
-
+docker search php7.4
+docker search nginx
+docker search mysql
+docker search phpmyadmin
+docker search mailcatcher
 
 # forWinでWindows、BIOS設定も確認
 タスクマネージャ＞パフォーマンス＞CPU「仮想化：有効」の状態にする
@@ -64,6 +67,6 @@ docker-compose run --rm php pwd
 # コンテナ停止
 docker-compose kill
 
-# コンテナ終了
+# コンテナ終了 & コンテナ削除
 docker-compose down
 

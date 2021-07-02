@@ -30,3 +30,7 @@ git remote -v
 git remote add origin https://github.com/＊＊＊＊＊＊＊.git
 
 
+# リモートブランチ取得（更新）
+git fetch --prune
+
+

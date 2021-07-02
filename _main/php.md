@@ -61,6 +61,7 @@ $value = str_replace(hex2bin("E3809C"), hex2bin("EFBD9E"), $value);
 -----------------------------------------
 # debug, log
 -----------------------------------------
+logger('=======================');
 $a = $aaa;
 \Illuminate\Support\Facades\Log::info(var_export($a, true));
 
@@ -76,6 +77,9 @@ printf("in: %s\n", "string");
 
 
 
+# 権限変更
+chmod 755 file
+chmod -R 755 dir
 
 
 ======================================================================================================================
@@ -120,14 +124,19 @@ touch ./database/database.sqlite
 
 # make
 php artisan make:controller Dir/Namae --invokable
+
+# モデルつくる。-mはマイグレも一緒に作成
 php artisan make:model Namae
-php artisan make:middleware EventIsValid
+php artisan make:model Users -m
+
+# ミドルウェア
+php artisan make:middleware AAAAA
 
 ## テーブル追加のマイグレーションファイルを作成
 php artisan make:migration create_namae_table
 
 ## カラム追加のマイグレーションファイルを作成
-php artisan make:migration add_column_info_table
+php artisan make:migration add_events_inquiry_url
 
 
 # テストファイルを作成

@@ -22,6 +22,10 @@ $_num = (int)preg_replace('/[^0-9]/', '', 'abc1-b3');
 # 文字列抜き出し
 'account' => substr($email. 0, strpos($email, "@")),
 
+# 文字列生成
+echo substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz_'), 0, 8);
+
+
 
 # 指定の文字が含まれる
 $str = 'this is a pen.';  
@@ -58,6 +62,16 @@ $value = str_replace(hex2bin("E3809C"), hex2bin("EFBD9E"), $value);
     $user->${"str"} = 'bbb';
 
 
+
+
+# ファイルを保存　？？？
+$data =  base64_decode([文字列]);
+$type = finfo_buffer(finfo_open(), $data, FILEINFO_EXTENSION);
+var_dump($type); // string(17) "jpeg/jpg/jpe/jfif"
+
+
+
+
 -----------------------------------------
 # debug, log
 -----------------------------------------
@@ -82,13 +96,27 @@ chmod 755 file
 chmod -R 755 dir
 
 
+
+
 ======================================================================================================================
 # Laravel
 ======================================================================================================================
+## 展開されたLaravelのバージョン確認
+php artisan --version
+
+
 # compose
 composer --version
 composer install
 composer dump-autoload
+
+
+
+# compose laravel migre
+指定入れないと最新が入る
+composer require doctrine/dbal
+composer require "doctrine/dbal:2.*"
+
 
 
 # laravel dev run serve
@@ -102,6 +130,10 @@ php artisan config:clear
 php artisan view:clear
 
 セットしたい場合は：cach
+
+## ルート確認
+php artisan routes
+
 
 
 # migration
@@ -136,7 +168,7 @@ php artisan make:middleware AAAAA
 php artisan make:migration create_namae_table
 
 ## カラム追加のマイグレーションファイルを作成
-php artisan make:migration add_events_inquiry_url
+php artisan make:migration add_column_test
 
 
 # テストファイルを作成
@@ -158,6 +190,8 @@ php artisan test --group NamaeTest
 # リクエストにマージする: ミドルウェア差し込みとか
 $request->merge(['test' => 'aaaaaaaaaaaaaaaa']);
 
+## ログ出力
+Log::debug('ログ！');
 
 
 
@@ -195,10 +229,26 @@ php artisan
 
 
 
+# マイグレのエラー
+## Illuminate\Database\QueryException  : SQLSTATE[42000]: Syntax error or access violation: 1101 BLOB, TEXT, GEOMETRY or JSON column 'options' can't have a default
+## value (SQL: alter table `uchinoko` add `options` json null default '')
+- 間違い
+    $table->json('options')->default("");
+    $table->json('options')->default("")->nullable();
+- 正解
+    $table->json('options')->nullable();
+### TEXT型も同じ。
+
+
+
+
 
 ======================================================================================================================
 # ECCUBE
 ======================================================================================================================
 # log
 dump($qb->getQuery()->getSQL());
+
+
+
 

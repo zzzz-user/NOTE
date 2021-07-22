@@ -20,6 +20,13 @@ mysql -u root -h localhost
 # pass混ぜて接続
 mysql --host=localhost --user=user_name --password=password db_name
 
+# 確認
+use mysql
+select user, host, plugin from user;
+
+
+
+
 
 =============================================================
 # SQL

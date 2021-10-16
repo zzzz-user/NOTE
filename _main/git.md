@@ -34,3 +34,15 @@ git remote add origin https://github.com/＊＊＊＊＊＊＊.git
 git fetch --prune
 
 
+# 他のブランチのファイルを拾う
+ブランチとファイルを指定して引っ張ってこれる
+git checkout snug_master -- app/Repositories/User/UserFreeTextFormRepository.php
+
+
+# 指定してPULL
+git pull origin develop
+
+
+
+
+

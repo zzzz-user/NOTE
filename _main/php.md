@@ -43,9 +43,11 @@ echo gettype($int);
 
 
 # 配列と文字列のやつ
+# 配列を文字列にする
 $s = implode('-', [1, 2, 4]);
 var_dump($s);
 
+# 文字列を配列にする
 $s = explode('/', '1番/2番/3番');
 var_dump($s);
 
@@ -78,6 +80,7 @@ var_dump($type); // string(17) "jpeg/jpg/jpe/jfif"
 logger('=======================');
 $a = $aaa;
 \Illuminate\Support\Facades\Log::info(var_export($a, true));
+
 
 error_log(date('Y/d/m h:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
 
@@ -125,9 +128,9 @@ php artisan serve
 
 # artisan
 php artisan cache:clear
-php artisan route:clear
 php artisan config:clear
 php artisan view:clear
+php artisan route:clear
 
 セットしたい場合は：cach
 
@@ -138,6 +141,15 @@ php artisan routes
 
 # migration
 php artisan migrate
+
+# マイグレいっこ戻す
+php artisan migrate:rollback --step=1
+
+
+# マイグレやり直しとSeederも実行する
+php artisan migrate:fresh --seed
+
+
 # 指定のマイグレートファイルを実行
 php artisan migrate:refresh --step=1  --path=/database/migrations/2020_20_20_00001_create_table_tablename.php
 
@@ -168,7 +180,11 @@ php artisan make:middleware AAAAA
 php artisan make:migration create_namae_table
 
 ## カラム追加のマイグレーションファイルを作成
-php artisan make:migration add_column_test
+php artisan make:migration add_[columnName]_to_[tableName]
+
+# 変更
+php artisan make:migration alter_[columnName]_to_[tableName]
+
 
 
 # テストファイルを作成

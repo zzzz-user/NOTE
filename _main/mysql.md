@@ -32,14 +32,28 @@ select user, host, plugin from user;
 # SQL
 =============================================================
 # insert
-insert into [テーブル名] values ([値]);
+insert into [テーブル名] (col_name1, col_name2, ...) values ([値]);
+
 # update
 update [テーブル名] set [カラム名]=[値];
+
 # delete
 delete from [テーブル名] where [カラム名]=[値];
+
 # alter
 alter table [テーブル名] modify [カラム名] [型]
 alter table [テーブル名] modify [カラム名] [型] not null;
 # clear
 truncate table [テーブル名];
+
+# 詳細
+desc [テーブル名]
+show create table [テーブル名];
+
+
+
+
+
+
+
 

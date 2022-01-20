@@ -44,5 +44,9 @@ git pull origin develop
 
 
 
+# ssh接続確認
+ssh -i id_rsa.file [リモートユーザー]@[リモートサーバーのホスト名]
+
+
 
 

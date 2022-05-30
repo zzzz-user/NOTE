@@ -27,3 +27,9 @@ vue create vuuuue
 Vueインスタンスの持つプロパティとメソッドは、ユーザ定義のプロパティと区別するために、頭に$が付けられている
 
 
+# [error] TypeError: Cannot read property 'call' of undefined at __webpack_require__
+キャッシュ残り
+強制削除かmixのhashVersionか
+
+
+

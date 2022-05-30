@@ -18,6 +18,9 @@ var hensuu = JSON.parse(sessionStorage.getItem('セッション名'));
 var hensuu = JSON.parse(sessionStorage.getItem('セッション名'));
 
 
+# log 出力、変数
+const str = 'Life, the universe and everything. Answer:';
+console.log(`${str} ${str.length}`);
 
 
 

@@ -1,5 +1,7 @@
 # php
 
+# chmod 777 .
+
 # version
 php --version
 
@@ -80,9 +82,12 @@ var_dump($type); // string(17) "jpeg/jpg/jpe/jfif"
 logger('=======================');
 $a = $aaa;
 \Illuminate\Support\Facades\Log::info(var_export($a, true));
+\Log::info(var_export($a, true));
+\Log::debug(__CLASS__.':'.__FUNCTION__.'---->');
 
 
-error_log(date('Y/d/m h:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
+# carbon date
+error_log(date('Y/m/d H:i:s').'['.str_pad(__LINE__, 4, '0', STR_PAD_LEFT).'] '.print_r($a, true).' ('.__FILE__.")\n", 3, "./tmp/_loglog.log");
 
 \Log::info($e->getMessage());
 log_info($log);
@@ -153,7 +158,14 @@ php artisan migrate:fresh --seed
 # 指定のマイグレートファイルを実行
 php artisan migrate:refresh --step=1  --path=/database/migrations/2020_20_20_00001_create_table_tablename.php
 
+
+# 指定のマイグレーションファイルを戻す？
+php artisan migrate:rollback --step=1  --path=/database/migrations/2020_01_01_000000_add_table.php
+
+
+
 # 指定のシーダーを実行
+composer dump-autoload
 php artisan db:seed --class=SeederFileNameSeeder
 
 
@@ -267,12 +279,26 @@ php artisan
 
 
 
-======================================================================================================================
-# ECCUBE
-======================================================================================================================
-# log
-dump($qb->getQuery()->getSQL());
 
-
-
+# laravel
+[2022-05-23 10:42:01] local.ERROR: Uncaught ReflectionException: Class App\Policies\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct()
+#1 [internal function]: {closure}()
+#2 Command line code(1): array_map()
+#3 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Uncaught ReflectionException: Class App\\Policies\\ModelPolicy does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionClass->__construct()
+#1 [internal function]: {closure}()
+#2 Command line code(1): array_map()
+#3 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
+参考：https://github.com/amir9480/vscode-laravel-extra-intellisense/issues/31
+＞二つめ
+対応：app\Providers\AuthServiceProvider.php
+コメントアウトする
 

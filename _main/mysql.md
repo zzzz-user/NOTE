@@ -52,8 +52,6 @@ show create table [テーブル名];
 
 
 
-
-
-
-
+# table dump
+$ mysqldump -u namae -t --compact db_name table_name --where='id=1';
 

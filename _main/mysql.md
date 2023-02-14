@@ -53,5 +53,39 @@ show create table [テーブル名];
 
 
 # table dump
-$ mysqldump -u namae -t --compact db_name table_name --where='id=1';
+mysqldump -u namae -t --compact db_name table_name --where='id=1';
+
+
+
+
+=============================================================
+# ポスグレ postgresql
+```
+create table column (
+  id integer, 
+  name varchar(10)
+);
+```
+
+# 縦表示横表示の切り替え select前にエンター
+\x
+
+# テーブル一覧
+\dt
+
+# テーブル詳細
+¥d table_name
+
+# sql  カラム名はダブルコーテーションで囲うらしい
+update deliverables set "public_at"='2019-03-01 10:00:00' where "id"=3;
+
+# テーブルをカラにするが、インクリメントはリセットされない。
+truncate table [テーブル名];
+# シーケンス番号もリセットしたい場合
+TRUNCATE TABLE [テーブル名] RESTART IDENTITY;
+
+# where In
+delete from USERS where "id" in (3, 2);
+
+
 

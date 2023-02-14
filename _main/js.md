@@ -22,6 +22,8 @@ var hensuu = JSON.parse(sessionStorage.getItem('セッション名'));
 const str = 'Life, the universe and everything. Answer:';
 console.log(`${str} ${str.length}`);
 
+# log フォームデータ formdata の中身
+console.log(...formData.entries());
 
 
 # 非同期
@@ -56,3 +58,10 @@ async function promiseAll() {
 rnd() {
     return Math.floor(Math.random() * 100);
 }
+
+
+
+# htmlで出力
+                    <td><span dangerouslySetInnerHTML={{__html: hensuu}} /></td>
+
+

@@ -82,8 +82,8 @@ var_dump($type); // string(17) "jpeg/jpg/jpe/jfif"
 logger('=======================');
 $a = $aaa;
 \Illuminate\Support\Facades\Log::info(var_export($a, true));
-\Log::info(var_export($a, true));
 \Log::debug(__CLASS__.':'.__FUNCTION__.'---->');
+\Log::debug(var_export($a, true));
 
 
 # carbon date
@@ -147,8 +147,14 @@ php artisan routes
 # migration
 php artisan migrate
 
+# マイグレ確認
+php artisan migrate:status
+
 # マイグレいっこ戻す
 php artisan migrate:rollback --step=1
+
+# マイグレにこ戻す
+php artisan migrate:rollback --step=2
 
 
 # マイグレやり直しとSeederも実行する

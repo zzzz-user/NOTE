@@ -3,6 +3,7 @@
 # version
 docker version
 docker-compose --version
+docker --version
 
 
 # dockerHubを検索できる

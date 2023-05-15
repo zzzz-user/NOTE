@@ -15,3 +15,7 @@ Win + Shift + S
 
 ### 絵文字
 Win + .
+
+### 取り消し線を引く（GoogleChat）
+Alt + Shift + 5
+

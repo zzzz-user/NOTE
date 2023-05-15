@@ -60,6 +60,18 @@ rnd() {
 }
 
 
+# error 出力
+    }).catch((error) => {
+      if (error.response.status == 404) {
+        //
+      }
+console.log('------------------------error');
+console.log(error);
+console.log(error.status);
+console.log(error.response.status);
+console.log(error.response.data);
+console.log(error.response.data.errors);
+
 
 # htmlで出力
                     <td><span dangerouslySetInnerHTML={{__html: hensuu}} /></td>

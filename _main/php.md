@@ -9,6 +9,11 @@ php --version
 php -i | grep ext-fileinfo
 
 
+# 確認用
+routes\web.php
+dd(app());
+
+
 # PHP + Laravel（blade） + Vue の書き出し
 <p>@{{ blockTitle }}</p>
 
@@ -137,10 +142,25 @@ php artisan config:clear
 php artisan view:clear
 php artisan route:clear
 
+php artisan clear-compiled
+
 セットしたい場合は：cach
 
 ## ルート確認
 php artisan routes
+
+# 一時的なURLを発行、URL解体
+        // アクセス署名付きURLを発行
+        $tmpURL =  URL::temporarySignedRoute('ルートの名前', 制限時間（now()->addMinutes(30)）, ['key' => 123]);
+\Log::debug(var_export($tmpURL, true));
+\Log::debug(var_export(parse_url($tmpURL), true));
+        // Laravel返却のパラメータを抜き出し
+        $parse_url = parse_url($tmpURL);
+\Log::debug(var_export($parse_url, true));
+        parse_str($parse_url['query'], $output);
+\Log::debug(var_export($output, true));
+
+
 
 
 
@@ -169,7 +189,6 @@ php artisan migrate:refresh --step=1  --path=/database/migrations/2020_20_20_000
 php artisan migrate:rollback --step=1  --path=/database/migrations/2020_01_01_000000_add_table.php
 
 
-
 # 指定のシーダーを実行
 composer dump-autoload
 php artisan db:seed --class=SeederFileNameSeeder
@@ -187,9 +206,11 @@ touch ./database/database.sqlite
 # make
 php artisan make:controller Dir/Namae --invokable
 
+
 # モデルつくる。-mはマイグレも一緒に作成
 php artisan make:model Namae
 php artisan make:model Users -m
+
 
 # ミドルウェア
 php artisan make:middleware AAAAA
@@ -199,6 +220,9 @@ php artisan make:migration create_namae_table
 
 ## カラム追加のマイグレーションファイルを作成
 php artisan make:migration add_[columnName]_to_[tableName]
+
+## カラム削除のマイグレーションファイルを作成
+php artisan make:migration drop_table_name
 
 # 変更
 php artisan make:migration alter_[columnName]_to_[tableName]
@@ -212,9 +236,20 @@ php artisan make:test Dir/NamaeTest --unit
 php artisan make:request User/Sample/EditRequest
 
 
+# コマンドファイルつくる
+docker-compose exec php php artisan make:command Dir/CommandStart
+...スラ注意
+
 # テスト実行
 php artisan test
 php artisan test --group NamaeTest
+
+# テストを書く
+クラスの名前は後ろにTest
+メソッドの名前は前にtest
+        $this->markTestIncomplete(
+          'このテストは、まだ実装されていません。'
+        );
 
 
 # query
@@ -247,6 +282,20 @@ $httpcode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
 echo $httpcode.'/';
 
 
+
+
+
+
+# mail(古い)未確認
+class IdentityVerifyRequestMail extends Mailable
+{
+        return $this->subject($subject)->view($view)->with($data)
+            // ヘッダー追加したい場合
+            // ->withSwiftMessage(function ($message) {
+            // $message->getHeaders()
+            //         ->addTextHeader('Custom-Header', 'HeaderValue');
+            // })
+            ;
 
 
 ======================================================================================================================
@@ -307,4 +356,96 @@ Stack trace:
 ＞二つめ
 対応：app\Providers\AuthServiceProvider.php
 コメントアウトする
+
+
+
+# Bugsnug
+## web接続でエラー発生させるコード
+```
+Route::get('/test', 'TestBugsnug');
+```
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
+use RuntimeException;
+
+class TestBugsnug extends Controller
+{
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request)
+    {
+        Bugsnag::notifyException(new RuntimeException("Test error"));
+        return 'Hello World!!!';
+    }
+}
+```
+
+
+
+# php test ファクトリが見つからない
+InvalidArgumentException: Unable to locate factory with name [default] [App\Models\User].
+     * @before
+     がある
+または
+public static function setUpBeforeClass(): void
+{
+    // テスト全体の前処理
+}
+setUpBeforeClass() が実行されるタイミングでは factory は使えない。（そもそもデータの状態が他のテストケースに依存しないようにした方が良い）
+
+
+
+# error
+## 422
+### Failed to load resource: the server responded with a status of 422 (Unprocessable Entity)
+たぶん、リクエストのバリデエラー。
+値型がおかしいとかみてみる
+
+
+
+
+# InvalidArgumentException: Unable to locate factory with name [default] [App\Models\xxxxxx].
+test実行しようとしてエラー
+use Tests\TestCase;
+していない。コマンドで生成されたファイルだと別の（use PHPUnit\Framework\TestCase;）が入っているので書き換えること
+
+
+
+
+
+# ルーティングエラー
+処理そのものは停止せず、エラーログに吐き出される
+local.ERROR: 
+#0 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(635): Illuminate\Routing\RouteCollection->match(Object(Illuminate\Http\Request))
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(624): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Router.php(613): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#3 /var/www/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(170): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+..
+..
+..
+composer とか npm のアップデートをする。
+なんか追加されてたりするため
+
+
+
+
+# ポートが見つからないと出るGuzzleHttp
+local.ERROR: GuzzleHttp\Exception\ConnectException: cURL error 7: Failed to connect to localhost port 11080: Connection refused (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in /var/www/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php:200
+Stack trace:
+** Dockerを使っている **
+$client = new Client();
+$client->request(...)では、localhost;8080ではなく、IPアドレスを指定する
+＞Windowsネットワーク設定で確認できるIPアドレス（192.168.xxx.xxx:[port]）
+
+
+
 

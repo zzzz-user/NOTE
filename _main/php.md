@@ -251,6 +251,8 @@ php artisan test --group NamaeTest
           'このテストは、まだ実装されていません。'
         );
 
+# tinker
+php artisan tinker
 
 # query
 ->toSql();

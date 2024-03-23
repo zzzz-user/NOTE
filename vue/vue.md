@@ -8,6 +8,18 @@ vue --version
 # install
 vue create vuuuue
 
+#
+npm update
+
+# frontを起動する
+cd /wk/front
+npm run serve
+
+# build
+cd /wk/front
+npm run build
+
+
 
 # filters: 日付形式
   filters: {

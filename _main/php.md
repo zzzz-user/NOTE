@@ -133,6 +133,7 @@ composer require "doctrine/dbal:2.*"
 
 
 # laravel dev run serve
+# Webserverを起動する
 php artisan serve
 
 
@@ -165,6 +166,7 @@ php artisan routes
 
 
 # migration
+# マイグレ実行
 php artisan migrate
 
 # マイグレ確認
@@ -319,6 +321,8 @@ pdo_sqlite ＝＞SQLite用
 composer install
 composer dump-autoload
 php artisan
+php composer.phar --version
+
 
 
 

@@ -1,18 +1,38 @@
 # docker
 
+## どっかー
+イメージを積んで実行
+## いめーじ、image
+こんな機能が必要なんだよねセット
+## こんてな
+イメージ群？
+## こんぽーさ、Docker Compose
+複数のコンテナをつなげるツール
+## まとめ
+使いたい機能のイメージを集めておいてコンポ―サーで各設定をまとめて実行する
+
 # version
+<!-- どっかー起動前提 -->
 docker version
 docker-compose --version
 docker --version
 
+# dockerfile
+イメージの設計図
 
-# dockerHubを検索できる
+
+
+# dockerHubからimageを検索できる
 docker search python3
 docker search php7.4
 docker search nginx
 docker search mysql
 docker search phpmyadmin
 docker search mailcatcher
+docker search laravel
+
+# pullで取得
+docker pull laravelsail/php81-composer:latest
 
 # forWinでWindows、BIOS設定も確認
 タスクマネージャ＞パフォーマンス＞CPU「仮想化：有効」の状態にする

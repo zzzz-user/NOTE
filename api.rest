@@ -1,0 +1,35 @@
+###
+GET http://localhost:2222/api/start HTTP/1.1
+
+### ctrl + alt + r
+GET http://localhost:2222/api/aaaaaa HTTP/1.1
+x-user:sfghjklujhyfghjkuhgki
+
+### ctrl + alt + r
+GET http://localhost:2222/api/aaaaaa HTTP/1.1
+x-user:sfghjklujhyfghjkuhgki
+
+id=a1a1a1a1a1a1
+&type=3
+
+### ctrl + alt + r
+POST http://localhost:2222/api/bbbbbbbb/19 HTTP/1.1
+x-user:sfghjklujhyfghjkuhgki
+Content-Type: application/x-www-form-urlencoded
+
+zip_filename=aaaaaNamae
+&files[0][name]=aaaa
+&files[0][data]=dddd
+&files[1][name]=aaaaaa
+&files[1][data]=ddddaa
+
+###
+POST http://localhost:2222/api/ccccccccc/23 HTTP/1.1
+content-type: application/json
+
+{
+    "ids": [1,2],
+    "public_at": "2022-10-01 10:00:00",
+    "num": 3,
+    "error_msg":""
+}

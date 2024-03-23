@@ -445,7 +445,7 @@ local.ERROR: GuzzleHttp\Exception\ConnectException: cURL error 7: Failed to conn
 Stack trace:
 ** Dockerを使っている **
 $client = new Client();
-$client->request(...)では、localhost;8080ではなく、IPアドレスを指定する
+$client->request(...)では、localhost:8080ではなく、IPアドレスを指定する
 ＞Windowsネットワーク設定で確認できるIPアドレス（192.168.xxx.xxx:[port]）
 
 

@@ -4,9 +4,28 @@
 
 // echo 'test';
 
-check_001();
+for ($i = 1; $i <= 30; $i++) {
+    if (strpos($i, '3') !== false) {
+        printf("%s!\n", $i);
+    } else if ($i % 3 === 0) {
+        printf("%s!\n", $i);
+    } else {
+        printf("%s\n", $i);
+    }
+}
+
+
+
+
+// check_001();
 // check_002();
 exit;
+
+foreach ($variable as $key => $value) {
+    # code...
+}
+
+
 
 
 
